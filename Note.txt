@@ -1,0 +1,21 @@
+expo init - to initalize the project
+<Text,View...> - are the core components
+App.js - is the root component
+
+**view -  is a component that holds child component
+every view by defualt using flex box
+
+for row main acess is left to right
+for colum main acces is top to bottom
+
+for row cross acess is top to bottom
+
+
+**--justifyContent--** ---- is used to orgnize elements alone with main access
+**--alignItems--** ---- is used to orgnize elements alone with cross access
+
+
+**--Button--** --- Button does not have style prop
+
+**--ScrollView--** view is good but it will be render all the items in the view when app is loaded
+this can be a profermance issue. to avoid that we can use **--FlatList--**
