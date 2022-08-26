@@ -1,27 +1,14 @@
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  SafeAreaView,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import { useState } from "react";
 
+import GoalItem from "./components/GoalItem";
+import GoalInput from "./components/GoalInput";
+
 export default function App() {
-  const [enteredTextGoalText, setEnteredTextGoalText] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
 
-  const goalInpuntHandler = (enteredText) => {
-    //in the onChangeText the return a prop with user input text to get that prop we use enteredText
-    // console.log(enteredText);
-    setEnteredTextGoalText(enteredText);
-  };
-
-  const addGoalHandler = () => {
+  const addGoalHandler = (enteredTextGoalText) => {
     setCourseGoals([
       ...courseGoals,
       { text: enteredTextGoalText, key: Math.random().toString() },
@@ -31,24 +18,13 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Your course goal"
-          onChangeText={goalInpuntHandler}
-        />
-        <Button title="Add goal" onPress={addGoalHandler} />
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goals}>
         <FlatList
           data={courseGoals} //data is a prop that require from the  FlatList
           renderItem={(itemData) => {
             //renderItem return the data elements
-            return (
-              <View style={styles.goalItem}>
-                <Text style={styles.goalText}>{itemData.item.text}</Text>
-              </View>
-            );
+            return <GoalItem text={itemData.item.text} />;
           }}
         />
       </View>
@@ -62,34 +38,8 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 16,
   },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: "blue",
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: "blue",
-    width: "70%",
-    marginRight: 8,
-    padding: 8,
-  },
 
   goals: {
     flex: 5,
-  },
-  goalItem: {
-    margin: 8,
-    padding: 8,
-    borderRadius: 6,
-    backgroundColor: "#5e0acc",
-    color: "white",
-  },
-  goalText: {
-    color: "white",
   },
 });
