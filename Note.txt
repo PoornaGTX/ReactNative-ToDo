@@ -19,3 +19,5 @@ for row cross acess is top to bottom
 
 **--ScrollView--** view is good but it will be render all the items in the view when app is loaded
 this can be a profermance issue. to avoid that we can use **--FlatList--**
+
+**--StatusBar--** --- is used to handle the status bar in the phone like(battery,time,signal)

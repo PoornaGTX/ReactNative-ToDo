@@ -24,18 +24,26 @@ const GoalInput = (props) => {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
-        <Image />
+        <Image
+          style={styles.image}
+          source={require("../assets/images/goal.png")}
+        />
         <TextInput
           style={styles.textInput}
           placeholder="Your course goal"
+          placeholderTextColor="white"
           onChangeText={goalInpuntHandler}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Add goal" onPress={addGoalHanderfromInput} />
+            <Button
+              title="Add goal"
+              onPress={addGoalHanderfromInput}
+              color="#5e0acc"
+            />
           </View>
           <View style={styles.button}>
-            <Button title="Cancle" onPress={props.onCancle} />
+            <Button title="Cancle" onPress={props.onCancle} color="#f31282" />
           </View>
         </View>
       </View>
@@ -51,15 +59,14 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: "blue",
+    backgroundColor: "#311b6b",
   },
   textInput: {
     borderWidth: 1,
     borderColor: "blue",
     width: "100%",
     padding: 8,
+    color: "white",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -68,5 +75,10 @@ const styles = StyleSheet.create({
   button: {
     width: "30%",
     marginHorizontal: 8, //margin left and right
+  },
+  image: {
+    width: 200,
+    height: 150,
+    margin: 20,
   },
 });

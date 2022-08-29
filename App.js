@@ -1,4 +1,5 @@
 import { StyleSheet, View, FlatList, Button } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import { useState } from "react";
 
@@ -37,37 +38,40 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add new goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      />
-      <GoalInput
-        onAddGoal={addGoalHandler}
-        visible={modelIsVisible}
-        onCancle={endAddGoalHandler}
-      />
-
-      <View style={styles.goals}>
-        <FlatList
-          data={courseGoals} //data is a prop that require from the  FlatList
-          renderItem={(itemData) => {
-            //renderItem return the data elements
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHander}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add new goal"
+          color="#5e0acc"
+          onPress={startAddGoalHandler}
         />
+        <GoalInput
+          onAddGoal={addGoalHandler}
+          visible={modelIsVisible}
+          onCancle={endAddGoalHandler}
+        />
+
+        <View style={styles.goals}>
+          <FlatList
+            data={courseGoals} //data is a prop that require from the  FlatList
+            renderItem={(itemData) => {
+              //renderItem return the data elements
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGoalHander}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
