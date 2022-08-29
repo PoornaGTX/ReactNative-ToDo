@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: "#5e0acc",
     color: "white",
+    height: 40,
   },
   goalText: {
     color: "white",
